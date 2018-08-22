@@ -1,0 +1,39 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root{
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+  background: red;
+}
+
+#root>div{
+  padding: 30px 20px;
+}
+
+.input_container{
+  width: 100%;
+  display: flex;
+}
+
+.comment_input{
+  flex: 1;
+  vertical-align: middle;
+  text-align: left;
+  height: 30px;
+  padding: 10px;
+}
+
+.send_button{
+  width: 80px;
+  height: 30px;
+  margin-left: 2px;
+}
+
+.result_conatiner p{
+  margin-top: 20px;
+}
