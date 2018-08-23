@@ -17,9 +17,9 @@ router
 
   let returnTime = new Date();
   returnTime.setTime(returnTime.getTime() + 32400000);
-
-  console.log(returnTime.toString());
   
+  console.log(returnTime.toString());
+
   params.response_timestamp='2018-04-10T03:50:40';
   ctx.body=params;
 })
