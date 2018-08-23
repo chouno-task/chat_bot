@@ -12,9 +12,9 @@ export default class ContentsContainer extends Component {
   
   getTimeStamp(){
     const d = new Date();
-    const hour  = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    const min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    const sec   = ( d.getSeconds() < 10 ) ? '0' + d.getSeconds() : d.getSeconds();
+    const hour = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
+    const min = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
+    const sec = ( d.getSeconds() < 10 ) ? '0' + d.getSeconds() : d.getSeconds();
     return hour+':'+min+':'+sec;
   }
 
