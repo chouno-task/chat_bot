@@ -39,7 +39,6 @@ app.use(BodyParser());
 
 // API
 const router = new Router();
-
 router
 .post('/chat', async (ctx, next) => {
   let params = ctx.request.body;
