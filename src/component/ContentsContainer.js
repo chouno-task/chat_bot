@@ -11,11 +11,14 @@ export default class ContentsContainer extends Component {
   }
   
   getTimeStamp(){
-    const d = new Date();
-    const hour = ( d.getHours()   < 10 ) ? '0' + d.getHours()   : d.getHours();
-    const min = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
-    const sec = ( d.getSeconds() < 10 ) ? '0' + d.getSeconds() : d.getSeconds();
-    return hour+':'+min+':'+sec;
+    const returnTime = new Date();
+    const y = returnTime.getFullYear();
+    const month = ("0"+(returnTime.getMonth() + 1)).slice(-2);
+    const date =  ("0"+returnTime.getDate()).slice(-2)
+    const hour =  ("0"+(returnTime.getHours())).slice(-2);
+    const min = ("0"+(returnTime.getMinutes())).slice(-2);
+    const sec = ("0"+(returnTime.getSeconds())).slice(-2);
+    return y+'-'+month+'-'+date+'T'+hour+':'+min+':'+sec;
   }
 
   commentSend(value){
@@ -23,7 +26,7 @@ export default class ContentsContainer extends Component {
     const data = {user_input: value};
     const sendData = JSON.stringify(data);
     this.sendTime = this.getTimeStamp();
-    fetch("/chat", {
+    fetch('/chat', {
       body:sendData,
       method:methodName,
       headers:{
@@ -34,8 +37,8 @@ export default class ContentsContainer extends Component {
     .then((res)=> res.json())
     .then((result)=>{
       const new_data = {
-        'bot':result.bot_response,
-        'user':result.user_input,
+        'bot_response':result.bot_response,
+        'user_input':result.user_input,
         'send_time':this.sendTime,
         'time':result.response_timestamp
       }
