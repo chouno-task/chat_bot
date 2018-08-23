@@ -4,6 +4,7 @@ const Router = require('koa-router');
 const BodyParser = require("koa-bodyparser");
 const fetch = require("isomorphic-fetch");
 const moment = require('moment');
+const post = require('./contoller/post')
 var serve = require('koa-static');
 
 const prefix1={
@@ -61,11 +62,15 @@ router
       })
       .catch(console.error);
       break;
-    default:
-      break;
   }
   params.response_timestamp=getReturnDateTime();
+  //dbにレコードを登録
+  post.insert([params.user_input,params.bot_response,params.response_timestamp]);
+
   ctx.body=params;
+})
+.get('/history/list',async (ctx, next) => {
+  //dbからレコードを取得
 })
 
 app
