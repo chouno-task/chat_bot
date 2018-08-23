@@ -10,6 +10,10 @@ export default class ContentsContainer extends Component {
     }
   }
   
+  componentDidMount(){
+    console.log('AppMount');
+  }
+
   getTimeStamp(){
     const returnTime = new Date();
     const y = returnTime.getFullYear();
