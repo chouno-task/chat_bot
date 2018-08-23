@@ -20,6 +20,7 @@ exports.insert=function(param){
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   });
+  console.log(process.env.DATABASE_URL);
   client.connect();
   client.query(sql,param, (err, res) => {
     if (err) throw err;
