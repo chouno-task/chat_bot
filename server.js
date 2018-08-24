@@ -69,7 +69,6 @@ router
 })
 .get('/history/list', (ctx, next) => {
   const result = post.list();
-  console.log('kita');
   this.body = result;
 })
 
