@@ -44,7 +44,6 @@ router
   let params = ctx.request.body;
   const user_input = params.user_input;
   const startTime = getStartTime();
-  await next();
   switch (user_input) {
     case QUESTION_1.user:
       params.bot_response = QUESTION_1.bot;   
@@ -67,13 +66,12 @@ router
   post.insert([params.user_input,params.bot_response,params.response_timestamp]);
   ctx.body=params;
 })
-.get('/history/list', (ctx, next) => {
-  const result = post.list();
-  this.body = result;
+.get('/history/list', async (ctx,next) => {
+  ctx.body = post.list();
 })
 
 app
 .use(router.routes())
-// .use(router.allowedMethods());
+.use(router.allowedMethods());
 
 app.listen(process.env.PORT || 3000);

@@ -14,7 +14,7 @@ exports.insert=function(param){
   });
 }
 
-exports.list=function(){
+exports.list= function(){
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
@@ -23,6 +23,6 @@ exports.list=function(){
   client.query(LIST_SQL,(err,res) => {
     if (err) throw err;
     client.end();
-    return JSON.stringify(res.rows);
-  });
+    console.log(JSON.stringify(res.rows));
+  })
 }

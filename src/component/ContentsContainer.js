@@ -55,11 +55,20 @@ export default class ContentsContainer extends Component {
     .catch(console.error);
   }
 
+  history(){
+    const methodName = "GET";
+    fetch('/history/list', {
+      method:methodName
+    })
+    .catch(console.error);
+  }
+
   render() {
     return(
       <div>
         <InputContainer commentSend={(value)=>this.commentSend(value)}/>
         <ResultContainer messages={this.state.currentMessages}/>
+        <button onClick={()=>this.history()}>履歴</button>
       </div>
     )
   }
