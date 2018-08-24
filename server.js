@@ -56,18 +56,21 @@ router
       .then((res)=> res.json())
       .then((result)=>{
         if(result.forecasts){
+          console.log('fetchComp');
           params.bot_response = QUESTION_3.bot.replace('**',result.forecasts[0].telop);
         }
       })
       .catch(console.error);
+      console.log('Break');
       break;
   }
   params.response_timestamp=getReturnDateTime();
   post.insert([params.user_input,params.bot_response,params.response_timestamp]);
+  console.log('return');
   ctx.body=params;
 })
-.get('/history/list', async (ctx,next) => {
-  ctx.body = post.list();
+.get('/history/list', async (ctx) => {
+  ctx.body = await post.list();
 })
 
 app

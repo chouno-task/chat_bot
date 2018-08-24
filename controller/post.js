@@ -14,15 +14,13 @@ exports.insert=function(param){
   });
 }
 
-exports.list= function(){
+exports.list= async function(){
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
   });
-  client.connect();
-  client.query(LIST_SQL,(err,res) => {
-    if (err) throw err;
-    client.end();
-    console.log(JSON.stringify(res.rows));
-  })
+  await client.connect()
+  const res = await client.query(LIST_SQL);
+  await client.end()
+  return JSON.stringify(res.rows,null,"\t");
 }
