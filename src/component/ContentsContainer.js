@@ -11,7 +11,7 @@ export default class ContentsContainer extends Component {
   }
   
   componentDidMount(){
-    console.log('AppMount');
+    
   }
 
   getTimeStamp(){
